@@ -8,8 +8,7 @@ import os
 
 import argparse
 
-
-CHUNKSIZE = 1000000
+CHUNKSIZE = 10000000
 
 
 def generate_chunks(strlen, strnum):
@@ -18,8 +17,11 @@ def generate_chunks(strlen, strnum):
     rest = strnum % CHUNKSIZE
 
     for j in range(numchunks + 1):
-        if j == numchunks:
-            chunksize = rest
+        if j == numchunks:  #last one
+            if rest == 0:
+                break
+            else:
+                chunksize = rest
         else:
             chunksize = CHUNKSIZE
 
